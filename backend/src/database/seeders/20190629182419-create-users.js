@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 
 module.exports = {
-  up: queryInterface => {
+  up: (queryInterface) => {
     return queryInterface.bulkInsert('users', [
       {
         name: 'Tony Stack',
@@ -14,7 +14,7 @@ module.exports = {
     ])
   },
 
-  down: queryInterface => {
+  down: (queryInterface) => {
     return queryInterface.bulkDelete('users')
   },
 }

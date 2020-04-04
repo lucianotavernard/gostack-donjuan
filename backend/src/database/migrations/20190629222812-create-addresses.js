@@ -14,7 +14,7 @@ module.exports = {
           key: 'id',
         },
       },
-      postal_code: {
+      zipcode: {
         allowNull: false,
         type: Sequelize.STRING(10),
       },
@@ -41,7 +41,7 @@ module.exports = {
     })
   },
 
-  down: queryInterface => {
+  down: (queryInterface) => {
     return queryInterface.dropTable('addresses')
   },
 }

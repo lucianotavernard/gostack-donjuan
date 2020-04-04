@@ -1,5 +1,5 @@
 module.exports = {
-  up: queryInterface => {
+  up: (queryInterface) => {
     return queryInterface.bulkInsert('products', [
       {
         name: 'Pizzas',
@@ -42,7 +42,7 @@ module.exports = {
     ])
   },
 
-  down: queryInterface => {
+  down: (queryInterface) => {
     return queryInterface.bulkDelete('products')
   },
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  up: queryInterface => {
+  up: (queryInterface) => {
     return queryInterface.bulkInsert('types_sizes', [
       {
         type_id: 1,
@@ -229,7 +229,7 @@ module.exports = {
     ])
   },
 
-  down: queryInterface => {
+  down: (queryInterface) => {
     return queryInterface.bulkDelete('types_sizes')
   },
 }
