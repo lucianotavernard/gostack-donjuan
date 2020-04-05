@@ -6,18 +6,24 @@ import { signOut } from '~/store/modules/auth/actions';
 import logo from '~/assets/images/logo.png';
 
 import {
-  Container, Content, Logo, UserOptions, UserInfo, Button, Cart, Icon,
+  Container,
+  Content,
+  Logo,
+  UserOptions,
+  UserInfo,
+  Button,
+  Cart,
+  Icon,
 } from './styles';
 
 export default function Header() {
-  const user = useSelector(state => state.auth.user);
+  const user = useSelector((state) => state.user.profile);
 
   const dispatch = useDispatch();
 
   function handleClick() {
     dispatch(signOut());
   }
-
 
   return (
     <Container>
@@ -29,7 +35,7 @@ export default function Header() {
 
         <UserOptions>
           <UserInfo>
-            <h6 className="username">{user.name}</h6>
+            <h6 className="username">{user?.name}</h6>
             <Button onClick={handleClick}>Sair do app</Button>
           </UserInfo>
 

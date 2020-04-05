@@ -1,13 +1,10 @@
-import {
-  call, put, all, takeLatest,
-} from 'redux-saga/effects';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
 import { formatDistance, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/esm/locale';
 
 import { formatPrice } from '~/util/format';
-
-import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
@@ -17,7 +14,7 @@ export function* getSales() {
   try {
     const response = yield call(api.get, 'sales');
 
-    const repository = response.data.map(sale => ({
+    const repository = response.data.map((sale) => ({
       ...sale,
       totalFormatted: formatPrice(sale.total),
       createdAtFormatted: formatDistance(parseISO(sale.createdAt), new Date(), {

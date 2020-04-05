@@ -1,19 +1,24 @@
-import Immutable from 'seamless-immutable';
-
-const initialState = Immutable({
-  signed: !!localStorage.getItem('@pizzaria:token') || false,
-  token: localStorage.getItem('@pizzaria:token') || null,
-  user: JSON.parse(localStorage.getItem('@pizzaria:user')) || null,
-});
+const initialState = {
+  token: null,
+  signed: false,
+  loading: false,
+};
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
+    case '@auth/SIGN_IN_REQUEST':
+      return { ...state, loading: true };
+
     case '@auth/SIGN_IN_SUCCESS':
-      const { user, token } = action.payload;
-      return state.merge({ signed: true, user, token });
+      return {
+        ...state,
+        token: action.payload.token,
+        signed: true,
+        loading: false,
+      };
 
     case '@auth/SIGN_OUT':
-      return state.merge({ signed: false, token: null, user: null });
+      return { ...state, token: null, signed: false };
 
     default:
       return state;

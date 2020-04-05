@@ -1,13 +1,10 @@
-import {
-  call, put, all, takeLatest,
-} from 'redux-saga/effects';
-
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { signInSuccess } from './actions';
+import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
@@ -15,25 +12,33 @@ export function* signIn({ payload }) {
 
     const response = yield call(api.post, 'sessions', { email, password });
 
-    localStorage.setItem('@pizzaria:token', response.data.token);
-    localStorage.setItem('@pizzaria:user', JSON.stringify(response.data.user));
+    const { token, user } = response.data;
 
-    yield put(signInSuccess(response.data.user, response.data.token));
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    yield put(signInSuccess(user, token));
 
     history.push('/');
   } catch (error) {
     toast.error('Verifique seu email e/ou senha!');
+    yield put(signFailure());
   }
 }
 
-export function signOut() {
-  localStorage.removeItem('@pizzaria:token');
-  localStorage.removeItem('@pizzaria:user');
+export function setToken({ payload }) {
+  if (!payload) return;
 
-  history.push('/signin');
+  const { token } = payload.auth;
+
+  if (token) api.defaults.headers.Authorization = `Bearer ${token}`;
+}
+
+export function signOut() {
+  history.push('/');
 }
 
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_OUT', signOut),
 ]);

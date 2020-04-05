@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 
 import auth from './auth/reducer';
-import sales from './sales/reducer';
+import user from './user/reducer';
+import sale from './sale/reducer';
 
-const reducers = combineReducers({
-  auth,
-  sales,
-});
+const reducers = combineReducers({ auth, user, sale });
 
 export default reducers;

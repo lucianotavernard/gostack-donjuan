@@ -9,8 +9,8 @@ import Main from '~/pages/Main';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" exact component={Main} isPrivate />
-      <Route path="/signin" component={SignIn} />
+      <Route path="/" exact component={SignIn} />
+      <Route path="/dashboard" component={Main} isPrivate />
     </Switch>
   );
 }
