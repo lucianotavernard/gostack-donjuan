@@ -7,6 +7,12 @@ class Product extends Model {
         name: Sequelize.STRING,
         description: Sequelize.STRING,
         photo: Sequelize.STRING,
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `${process.env.APP_URL}/files/${this.photo}`
+          },
+        },
       },
       {
         sequelize,
