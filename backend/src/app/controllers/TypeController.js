@@ -7,7 +7,7 @@ class TypeController {
 
     const types = await Type.findAll({
       where: { product_id: id },
-      attributes: ['id', 'name', 'photo'],
+      attributes: ['id', 'name', 'photo', 'url'],
     })
 
     return res.json(types)

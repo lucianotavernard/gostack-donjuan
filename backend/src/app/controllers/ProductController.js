@@ -3,7 +3,7 @@ import Product from '../models/Product'
 class ProductController {
   async index(req, res) {
     const products = await Product.findAll({
-      attributes: ['id', 'name', 'description', 'photo'],
+      attributes: ['id', 'name', 'description', 'photo', 'url'],
     })
 
     return res.json(products)

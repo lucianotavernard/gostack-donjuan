@@ -7,7 +7,7 @@ class SizeController {
 
     const sizes = await Size.findAll({
       where: { product_id: id },
-      attributes: ['id', 'name', 'photo'],
+      attributes: ['id', 'name', 'photo', 'url'],
     })
 
     return res.json(sizes)
@@ -27,7 +27,7 @@ class SizeController {
 
     const size = await Size.create({
       ...req.body,
-      product_idd: id,
+      product_id: id,
       photo: filename,
     })
 
