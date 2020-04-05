@@ -3,9 +3,7 @@ import * as Yup from 'yup'
 export default async (req, res, next) => {
   try {
     const schema = Yup.object().shape({
-      price: Yup.number()
-        .positive()
-        .required(),
+      price: Yup.number().positive().required(),
     })
 
     await schema.validate(req.body, { abortEarly: false })
