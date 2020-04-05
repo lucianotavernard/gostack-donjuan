@@ -4,9 +4,9 @@ class Address extends Model {
   static init(sequelize) {
     super.init(
       {
-        postalCode: Sequelize.STRING,
         street: Sequelize.STRING,
         number: Sequelize.STRING,
+        zipcode: Sequelize.STRING,
         neighborhood: Sequelize.STRING,
       },
       {
