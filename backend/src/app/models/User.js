@@ -19,7 +19,7 @@ class User extends Model {
       }
     )
 
-    this.addHook('beforeSave', user => {
+    this.addHook('beforeSave', (user) => {
       if (user.password) user.password_hash = hashSync(user.password, 8)
     })
 
@@ -31,9 +31,9 @@ class User extends Model {
   }
 
   generateToken({ id, isAdmin }) {
-    const { secret, ttl } = authConfig
+    const { secret, expiresIn } = authConfig
 
-    return jwt.sign({ id, isAdmin }, secret, { expiresIn: ttl })
+    return jwt.sign({ id, isAdmin }, secret, { expiresIn })
   }
 }
 
