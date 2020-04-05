@@ -10,8 +10,14 @@ class TypeSizeController {
       where: { type_id: typeId },
       attributes: ['id', 'price'],
       include: [
-        { model: Type, as: 'type', attributes: ['id', 'name', 'photo'] },
-        { model: Size, as: 'size', attributes: ['id', 'name', 'photo'] },
+        {
+          association: 'type',
+          attributes: ['id', 'name', 'photo', 'url'],
+        },
+        {
+          association: 'size',
+          attributes: ['id', 'name', 'photo', 'url'],
+        },
       ],
     })
 

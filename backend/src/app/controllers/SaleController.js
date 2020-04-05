@@ -1,10 +1,6 @@
 import Sale from '../models/Sale'
-import User from '../models/User'
 import SaleItem from '../models/SaleItem'
-import TypeSize from '../models/TypeSize'
 import Address from '../models/Address'
-import Type from '../models/Type'
-import Size from '../models/Size'
 
 class SaleController {
   async index(req, res) {
@@ -15,27 +11,22 @@ class SaleController {
       attributes: ['id', 'total', 'note', 'createdAt'],
       include: [
         {
-          model: User,
-          as: 'user',
+          association: 'user',
         },
         {
-          model: SaleItem,
-          as: 'items',
+          association: 'items',
           attributes: ['id', 'price', 'discount', 'total'],
           include: [
             {
-              model: TypeSize,
-              as: 'type_size',
+              association: 'type_size',
               attributes: ['id', 'price'],
               include: [
                 {
-                  model: Type,
-                  as: 'type',
+                  association: 'type',
                   attributes: ['id', 'name', 'photo', 'url'],
                 },
                 {
-                  model: Size,
-                  as: 'size',
+                  association: 'size',
                   attributes: ['id', 'name', 'photo', 'url'],
                 },
               ],
@@ -54,7 +45,12 @@ class SaleController {
 
     const sales = await Sale.findOne({
       where: { id },
-      include: [{ model: SaleItem, as: 'items' }],
+      include: [
+        {
+          association: 'items',
+          attributes: ['id', 'price', 'discount', 'total'],
+        },
+      ],
     })
 
     return res.json(sales)
@@ -71,7 +67,7 @@ class SaleController {
 
     const sale = await Sale.create({ ...req.body, userId, addressId })
 
-    const saleItems = items.map(item => ({ ...item, saleId: sale.id }))
+    const saleItems = items.map((item) => ({ ...item, saleId: sale.id }))
 
     await SaleItem.bulkCreate(saleItems)
 
