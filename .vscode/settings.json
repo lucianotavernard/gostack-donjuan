@@ -1,7 +1,7 @@
 {
   "eslint.workingDirectories": [
-    "./backend",
-    "./frontend",
-    "./mobile"
+    "./packages/backend",
+    "./packages/frontend",
+    "./packages/mobile"
   ]
 }
