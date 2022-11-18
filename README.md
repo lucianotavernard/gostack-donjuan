@@ -7,16 +7,16 @@
 </h4>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ltavernard/donjuan">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lucianotavernard/gostack-donjuan">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ltavernard/donjuan">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/lucianotavernard/gostack-donjuan">
 
-  <a href="https://github.com/ltavernard/donjuan/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ltavernard/donjuan">
+  <a href="https://github.com/lucianotavernard/gostack-donjuan/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lucianotavernard/gostack-donjuan">
   </a>
 
-  <a href="https://github.com/ltavernard/donjuan/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/ltavernard/donjuan">
+  <a href="https://github.com/lucianotavernard/gostack-donjuan/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lucianotavernard/gostack-donjuan">
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
@@ -47,8 +47,8 @@ DonJuan Pizzaria é uma aplicação que pode ser usado para gerenciamento de uma
 
 No momento, você pode iniciar o projeto com as seguintes etapas:
 
-1. Clone o repositório: `https://github.com/ltavernard/donjuan.git`
-2. Acesse o diretório do projeto: `cd donjuan`
+1. Clone o repositório: `https://github.com/lucianotavernard/gostack-donjuan.git`
+2. Acesse o diretório do projeto: `cd gostack-donjuan`
 3. Rode o comando para instalar as dependências: `yarn`
 4. Rode o comando para instalar as outras dependências: `yarn bootstrap`
 5. Rode o comando para criar as migrations: `yarn migrate`
